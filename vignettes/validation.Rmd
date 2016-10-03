@@ -1,0 +1,50 @@
+---
+title: "Validering"
+author: "Erik Bülow"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+# Intro
+
+```{r}
+library(magrittr)
+library(dplyr)
+```
+
+Vi villhär validera paketets funktioner genom att beräkna EQ5D-index och jämföra detta mot tidigare beräknade motsvarande värden från SPSS.
+
+
+# Data
+```{r}
+df_orig <- readr::read_csv("Z:\\SHPR\\Årsrapport\\2015\\Data\\Dispensären_SE.txt")
+
+df <- df_orig
+names(df) <- tolower(names(df))
+```
+
+
+# Beräkning
+
+```{r}
+
+compare <- function(vars) {
+  x <-  df %>% select(one_of(vars)) %>% as.matrix() %>% 
+    .[(!matrixStats::rowAnyMissings(.)), ] 
+
+  all.equal(eq2index(x[, -6], se), x[, 6])
+}
+
+system.time({
+  compare(c("eq10", "eq20", "eq30", "eq40", "eq50", "eq5d0se"))
+  compare(c("eq11", "eq21", "eq31", "eq41", "eq51", "eq5d1se"))
+  compare(c("eq16", "eq26", "eq36", "eq46", "eq56", "eq5d6se"))
+  compare(c("eq110", "eq210", "eq310", "eq410", "eq510", "eq5d10se"))
+})
+```
+
