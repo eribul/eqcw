@@ -12,6 +12,9 @@
 #' # nidividual numeric vector
 #' eq2index(c(1, 2, 3, 2, 1), "se")
 #' eq2index(c(1, 2, 3, 2, 1), "uk")
+eq2index <- function(x, ...) UseMethod("eq2index", x)
+
+#' @export
 eq2index.character <- function(x, ...) {
 
   if (!all(nchar(x, keepNA = TRUE) == 5))
@@ -40,9 +43,9 @@ eq2index.matrix <- function(x, cm, ...) {
     stop(        "Values must be numeric!")
   if (ncol(x) != 5)
     stop(sprintf("EQ5D have 5 dimensions, not %s!", ncol(x)))
-  if (max(x) > 5)
+  if (max(x, na.rm = TRUE) > 5)
     stop(sprintf("All values should be <= 5, not %s!", max(x)))
-  if (min(x) < 1)
+  if (min(x, na.rm = TRUE) < 1)
     stop(sprintf("All values should be >= 1, not %s!", min(x)))
   if (!is.codematrix(cm))
     stop(        "cm is not a code matrix!")
@@ -68,8 +71,7 @@ eq2index.matrix <- function(x, cm, ...) {
   c(res)
 }
 
-#' @export
-eq2index            <- function(x, ...) UseMethod("eq2index", x)
+
 #' @export
 eq2index.factor     <- function(x, ...) eq2index(as.character(x, ...))
 #' @export

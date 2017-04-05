@@ -3,15 +3,15 @@ Title: Cross Walk Algorithms for EQ5D-data
 Version: 0.0.0.9000
 Authors@R: person("Erik", "Bulow", email = "erik.bulow@registercentrum.se", role = c("aut", "cre"))
 Description: Translations between different conuntryspecific EQ5D value sets.
-Depends:
-    R (>= 3.2.4)
-Imports:
-  matrixStats
+Depends: R (>= 3.2.4)
+Imports: matrixStats
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Suggests:
-    knitr,
-    rmarkdown
+Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
+NeedsCompilation: no
+Packaged: 2017-04-05 07:43:44 UTC; eribu
+Author: Erik Bulow [aut, cre]
+Maintainer: Erik Bulow <erik.bulow@registercentrum.se>

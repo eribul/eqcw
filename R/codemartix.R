@@ -3,6 +3,7 @@
 #' @param x object
 #' @param y,z additional numeric vectors if \code{x} is numeric of length 5
 #' @param const constant values (numeric of length 3)
+#' @param ... pass arguments to other methods
 #'
 #' @return Object of class "codematrix", a \code{5 * 3} numerical matrix
 #' with rows corresponding to EQ5D-dimensions (+ constant),
@@ -13,13 +14,24 @@
 #'
 #' @examples
 #'
-#' # Swedish code martix based on individual vectors for each response level
-#' uk <- codematrix(
-#'         rep(0, 6),
-#'         c(.069, .104, .036, .123, .071, .081),
-#'         c(.314, .214, .094, ..386, .237, .269))
+#' # British
+#'uk <-
+#'  codematrix(
+#'    rep(0, 5),
+#'    c(.069, .104, .036, .123, .071),
+#'    c(.314, .214, .094, .386, .236),
+#'    const = c(1, .081, .35)
+#'  )
 #'
-codematrix <- function(x, const, ...) UseMethod("codematrix", x)
+#'# Swedish
+#'se <-
+#'  codematrix(
+#'    rep(0, 5),
+#'    c(.0666, .0276, .1012, .0345, .0552),
+#'    c(.1247, .0276, .1355, .0904, .2077),
+#'    const = c(.9694, 0, .0433)
+#'  )
+codematrix <- function(x, ...) UseMethod("codematrix", x)
 
 
 #' @export
@@ -68,8 +80,8 @@ is.codematrix <- function(x)
   inherits(x, "codematrix")
 
 #' @export
-`-.codematrix` <- function(x) {
-  x     <- -unclass(x)
+`-.codematrix` <- function(e1, e2) {
+  x     <- -unclass(e1)
   const <- attr(x, "const")
   attr(x, "const") <- c(const[1], -const[2:3])
   structure(x, class = c("codematrix", "matrix"))

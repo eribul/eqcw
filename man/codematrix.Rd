@@ -7,7 +7,7 @@
 \alias{is.codematrix}
 \title{Construct EQ5D code martix}
 \usage{
-codematrix(x, const, ...)
+codematrix(x, ...)
 
 \method{codematrix}{matrix}(x, const, ...)
 
@@ -17,6 +17,8 @@ is.codematrix(x)
 }
 \arguments{
 \item{x}{object}
+
+\item{...}{pass arguments to other methods}
 
 \item{const}{constant values (numeric of length 3)}
 
@@ -33,11 +35,21 @@ Construct EQ5D code martix
 }
 \examples{
 
-# Swedish code martix based on individual vectors for each response level
-uk <- codematrix(
-        rep(0, 6),
-        c(.069, .104, .036, .123, .071, .081),
-        c(.314, .214, .094, ..386, .237, .269))
+# British
+uk <-
+ codematrix(
+   rep(0, 5),
+   c(.069, .104, .036, .123, .071),
+   c(.314, .214, .094, .386, .236),
+   const = c(1, .081, .35)
+ )
 
+# Swedish
+se <-
+ codematrix(
+   rep(0, 5),
+   c(.0666, .0276, .1012, .0345, .0552),
+   c(.1247, .0276, .1355, .0904, .2077),
+   const = c(.9694, 0, .0433)
+ )
 }
-
