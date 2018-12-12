@@ -44,9 +44,9 @@ eq2index.matrix <- function(x, cm, ...) {
   if (ncol(x) != 5)
     stop(sprintf("EQ5D have 5 dimensions, not %s!", ncol(x)))
   if (max(x, na.rm = TRUE) > 5)
-    stop(sprintf("All values should be <= 5, not %s!", max(x)))
+    stop(sprintf("All values should be <= 5, not %s!", max(x, na.rm = TRUE)))
   if (min(x, na.rm = TRUE) < 1)
-    stop(sprintf("All values should be >= 1, not %s!", min(x)))
+    stop(sprintf("All values should be >= 1, not %s!", min(x, na.rm = TRUE)))
   if (!is.codematrix(cm))
     stop(        "cm is not a code matrix!")
 
