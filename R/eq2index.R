@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' # nidividual numeric vector
+#' # individual numeric vector
 #' eq2index(c(1, 2, 3, 2, 1), "se")
 #' eq2index(c(1, 2, 3, 2, 1), "uk")
 eq2index <- function(x, ...) UseMethod("eq2index", x)
