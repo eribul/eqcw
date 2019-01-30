@@ -24,7 +24,7 @@ numeric index vector
 Calculate EQ5D-index from individual EQ5D-levels
 }
 \examples{
-# nidividual numeric vector
+# individual numeric vector
 eq2index(c(1, 2, 3, 2, 1), "se")
 eq2index(c(1, 2, 3, 2, 1), "uk")
 }

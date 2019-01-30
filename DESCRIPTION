@@ -2,7 +2,15 @@ Package: eqcw
 Title: Cross Walk Algorithms for EQ5D-data
 Version: 0.0.0.9000
 Authors@R: person("Erik", "Bulow", email = "erik.bulow@registercentrum.se", role = c("aut", "cre"))
-Description: Translations between different conuntryspecific EQ5D value sets.
+Description: 
+  Translations between different conuntryspecific EQ5D value sets and 
+  summary statistics for patient-reported outcome measures: the improvement ratio. 
+  Patient-reported outcomes measures (PROMs) can facilitate objective 
+  comparisons of alternative treatments and can aid clinicians, researchers, 
+  decision-makers and members of the general public in gauging different 
+  healthcare providers' performance using a simple index, the improvement ratio. 
+  This package includes methods for inference and null-hypothesis testing 
+  of the improvement index in different groups or testing for trends. 
 Depends: R (>= 3.2.4)
 Imports: matrixStats
 License: GPL-2
@@ -10,7 +18,7 @@ Encoding: UTF-8
 LazyData: true
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 NeedsCompilation: no
 Packaged: 2017-04-05 07:43:44 UTC; eribu
 Author: Erik Bulow [aut, cre]
